@@ -3,6 +3,11 @@ name = "dowser"
 version = "0.1.0"
 authors = ["Benjamin Wenzel <wenzel@ehealthexperts.de>"]
 
+[build-dependencies]
+askama = "0.5"
+
 [dependencies]
+askama = "0.6.4"
+chrono = "0.4.2"
 clap = "2.31.2"
 lazy_static = "1.0.0"
