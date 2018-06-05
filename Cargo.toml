@@ -1,8 +1,36 @@
 [package]
 name = "dowser"
 version = "0.1.0"
-authors = ["Benjamin Wenzel <wenzel@ehealthexperts.de>"]
+authors = ["Benjamin Wenzel <wenzel@ehealthexperts.de>",
+           "Christian Fochler <fochler@ehealthexperts.de>"]
+license = "MIT"
+homepage = "https://www.ehealthexperts.de"
+repository = "https://github.com/eHealthExperts/dowser.git"
+publish = false
 
 [dependencies]
 clap = "2.31.2"
-lazy_static = "1.0.0"
+lazy_static = "1.0.1"
+
+[target.'cfg(windows)'.build-dependencies]
+winres = "0.1.5"
+
+[package.metadata.winres]
+FileVersion = "0.1.0"
+LegalCopyright = "eHealthExperts GmbH. All rights reserved."
+ProductName = "dowser"
+ProductVersion = "0.1.0"
+
+[package.metadata.release]
+sign-commit = true
+disable-push = true
+upload-doc = false
+no-dev-version = true
+tag-message = "{{version}}"
+tag-prefix = "v"
+pre-release-commit-message = "{{version}}"
+pre-release-replacements = [
+    {file=".appveyor.yml", search="version: [a-z0-9\\.\\-\\{\\}]+", replace="version: {{version}}-{branch}-{build}"},
+    {file="Cargo.toml", search="FileVersion = \"[0-9\\.]+\"", replace="FileVersion = \"{{version}}\""},
+    {file="Cargo.toml", search="ProductVersion = \"[0-9\\.]+\"", replace="ProductVersion = \"{{version}}\""},
+]

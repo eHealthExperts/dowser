@@ -6,6 +6,7 @@ Convenience wrapper tool that utilizes ike-scan and interprets the output to ana
 https://github.com/royhills/ike-scan
 
 ### ike-scan Documentation
+http://nta-monitor.com/wiki/index.php/Ike-scan_User_Guide
 
 ### ike-scan Releases
 https://github.com/royhills/ike-scan/releases
