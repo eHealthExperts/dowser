@@ -1,5 +1,9 @@
 # dowser
 
+[![Latest](https://img.shields.io/github/release/eHealthExperts/dowser.svg?label=latest)](https://github.com/eHealthExperts/dowser/releases/latest)
+[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/pax0ee62rrb3bvoc/branch/master?svg=true)](https://ci.appveyor.com/project/ChriFo/dowser)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+
 Convenience wrapper tool that utilizes ike-scan and interprets the output to analyze VPN connectivity from a certain environment.
 
 ## Redistributable dependency: ike-scan
