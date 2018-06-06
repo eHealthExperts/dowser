@@ -38,7 +38,7 @@ after_test:
     - ren target\release\dowser.exe %filename%
     - mkdir dowser-redist-{version}
     - move target\release\%filename% dowser-redist-{version}\%filename
-    - curl -sSf -o ike-scan.zip https://github.com/royhills/ike-scan/releases/download/1.9/ike-scan-win32-1.9.zip
+    - curl -vLsSf -o ike-scan.zip https://github.com/royhills/ike-scan/releases/download/1.9/ike-scan-win32-1.9.zip
     - unzip ike-scan.zip
     - move ike-scan-1.9\ike-scan.exe dowser-redist-{version}\ike-scan.exe
 
