@@ -1,4 +1,4 @@
-version: 0.1.3-{branch}-{build}
+version: 0.1.4-{branch}-{build}
 
 environment:
     global:
@@ -36,14 +36,15 @@ test_script:
 after_test:
     - cargo build --release --verbose
     - ren target\release\dowser.exe %filename%
-    - mkdir dowser-redist-{version}
-    - move target\release\%filename% dowser-redist-{version}\%filename
+    - mkdir "dowser-redist-%APPVEYOR_BUILD_VERSION%"
+    - move target\release\%filename% "dowser-redist-%APPVEYOR_BUILD_VERSION%\%filename"
     - curl -vLsSf -o ike-scan.zip https://github.com/royhills/ike-scan/releases/download/1.9/ike-scan-win32-1.9.zip
     - unzip ike-scan.zip
-    - move ike-scan-1.9\ike-scan.exe dowser-redist-{version}\ike-scan.exe
+    - dir
+    - move ike-scan.exe "dowser-redist-%APPVEYOR_BUILD_VERSION%\ike-scan.exe"
 
 artifacts:
-    - path: 'dowser-redist-{version}'
+    - path: "dowser-redist-$(APPVEYOR_BUILD_VERSION)"
 
 deploy:
     description: ''
