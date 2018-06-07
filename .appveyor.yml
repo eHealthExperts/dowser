@@ -8,9 +8,6 @@ environment:
         - channel: stable
           target: x86_64-pc-windows-msvc
           filename: dowser-x64.exe
-        - channel: stable
-          target: i686-pc-windows-msvc
-          filename: dowser-x86.exe
 
 install:
     - curl -sSf -o rustup-init.exe https://win.rustup.rs/
@@ -35,12 +32,10 @@ test_script:
 
 after_test:
     - cargo build --release --verbose
-    - ren target\release\dowser.exe %filename%
     - mkdir "dowser-redist-%APPVEYOR_BUILD_VERSION%"
-    - move target\release\%filename% "dowser-redist-%APPVEYOR_BUILD_VERSION%\%filename%"
-    - curl -vLsSf -o ike-scan.zip https://github.com/royhills/ike-scan/releases/download/1.9/ike-scan-win32-1.9.zip
+    - move "target\release\dowser.exe" "dowser-redist-%APPVEYOR_BUILD_VERSION%\dowser.exe"
+    - curl -LsSf -o ike-scan.zip https://github.com/royhills/ike-scan/releases/download/1.9/ike-scan-win32-1.9.zip
     - unzip ike-scan.zip
-    - dir
     - move ike-scan.exe "dowser-redist-%APPVEYOR_BUILD_VERSION%\ike-scan.exe"
 
 artifacts:

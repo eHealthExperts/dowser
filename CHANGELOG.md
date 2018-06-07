@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.6
+* remove 32bit build
+
 ## 0.1.3, 0.1.4, 0.1.5
 * release adjustments
 
