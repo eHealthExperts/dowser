@@ -1,6 +1,6 @@
 [package]
 name = "dowser"
-version = "0.1.5"
+version = "0.1.6"
 authors = ["Benjamin Wenzel <wenzel@ehealthexperts.de>",
            "Christian Fochler <fochler@ehealthexperts.de>"]
 license = "MIT"
@@ -16,7 +16,7 @@ lazy_static = "1.0.1"
 winres = "0.1.5"
 
 [package.metadata.winres]
-FileVersion = "0.1.5"
+FileVersion = "0.1.6"
 LegalCopyright = "eHealthExperts GmbH. All rights reserved."
 ProductName = "dowser"
-ProductVersion = "0.1.5"
+ProductVersion = "0.1.6"
