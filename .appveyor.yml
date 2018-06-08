@@ -37,6 +37,7 @@ after_test:
     - curl -LsSf -o ike-scan.zip https://github.com/royhills/ike-scan/releases/download/1.9/ike-scan-win32-1.9.zip
     - unzip ike-scan.zip
     - move ike-scan.exe "dowser-redist-%APPVEYOR_BUILD_VERSION%\ike-scan.exe"
+    - move cygwin1.dll "dowser-redist-%APPVEYOR_BUILD_VERSION%\cygwin1.dll"
 
 artifacts:
     - path: "dowser-redist-$(APPVEYOR_BUILD_VERSION)"
