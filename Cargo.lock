@@ -135,7 +135,7 @@ dependencies = [
 
 [[package]]
 name = "dowser"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "askama 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "askama 0.6.4 (registry+https://github.com/rust-lang/crates.io-index)",
