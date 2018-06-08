@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1
+* added cygwin dll for windows binary release
+
+## 0.2.0
+* added basic scan report generation (environment scan missing yet)
+
 ## 0.1.6
 * remove 32bit build
 
