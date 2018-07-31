@@ -1,6 +1,6 @@
 extern crate clap;
-use self::clap::{Arg, App};
-use ::config::Config;
+use self::clap::{App, Arg};
+use config::Config;
 
 pub fn get_opts() -> Config {
     let matches = App::new("dowser - ike-scan convenience facade")

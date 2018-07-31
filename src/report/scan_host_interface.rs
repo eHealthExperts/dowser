@@ -7,11 +7,11 @@ pub struct ScanHostInterface {
     ip: Option<IpAddr>,
     dns1: Option<IpAddr>,
     dns2: Option<IpAddr>,
-    domain: Option<String>
+    domain: Option<String>,
 }
 
 pub struct ScanHostInterfaceBuilder {
-    iface: ScanHostInterface
+    iface: ScanHostInterface,
 }
 
 impl ScanHostInterface {
@@ -22,7 +22,9 @@ impl ScanHostInterface {
 
 impl ScanHostInterfaceBuilder {
     fn new() -> ScanHostInterfaceBuilder {
-        let iface = ScanHostInterface { ..Default::default() };
+        let iface = ScanHostInterface {
+            ..Default::default()
+        };
         ScanHostInterfaceBuilder { iface }
     }
 

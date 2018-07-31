@@ -12,7 +12,7 @@ use super::scan_host_interface::ScanHostInterface;
 pub struct ScanReport {
     endpoint_reachable: bool,
     endpoint_reachable_using_nat_t: bool,
-    scan_host_ifaces: Vec<ScanHostInterface>
+    scan_host_ifaces: Vec<ScanHostInterface>,
 }
 
 #[derive(Template)]
@@ -20,12 +20,14 @@ pub struct ScanReport {
 struct ScanReportTemplate<'a> {
     now: &'a str,
     endpoint_reachable: bool,
-    endpoint_reachable_using_nat_t: bool
+    endpoint_reachable_using_nat_t: bool,
 }
 
 impl ScanReport {
     pub fn new() -> ScanReport {
-        let result = ScanReport { ..Default::default() };
+        let result = ScanReport {
+            ..Default::default()
+        };
         result
     }
 
@@ -47,11 +49,13 @@ impl ScanReport {
         let template = ScanReportTemplate {
             now: &now.to_rfc2822(),
             endpoint_reachable: self.endpoint_reachable,
-            endpoint_reachable_using_nat_t: self.endpoint_reachable_using_nat_t
+            endpoint_reachable_using_nat_t: self.endpoint_reachable_using_nat_t,
         };
         match template.render() {
-            Ok(output) => file.write_all(&output.into_bytes()[..]).expect("Unable to write data"),
-            Err(msg) => eprintln!("Failed to write scan report: {}", msg)
+            Ok(output) => file
+                .write_all(&output.into_bytes()[..])
+                .expect("Unable to write data"),
+            Err(msg) => eprintln!("Failed to write scan report: {}", msg),
         }
     }
 }

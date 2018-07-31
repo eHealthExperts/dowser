@@ -10,9 +10,8 @@ pub mod env_scan;
 pub mod ike_scan;
 pub mod opts;
 pub mod report;
-use ::config::Config;
-use ::report::scan_report::ScanReport;
-
+use config::Config;
+use report::scan_report::ScanReport;
 
 lazy_static! {
     pub static ref CONFIG: Config = ::opts::get_opts();
@@ -27,8 +26,6 @@ fn verify_env_reqs() {
         println!("Environment ready");
     }
 }
-
-
 
 fn main() {
     if CONFIG.verbose {

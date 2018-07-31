@@ -1,8 +1,8 @@
 use std::process::{Command, Output};
 
-use ::config::Config;
-use ::CONFIG;
-use ::report::scan_report::ScanReport;
+use config::Config;
+use report::scan_report::ScanReport;
+use CONFIG;
 
 #[cfg(target_os = "windows")]
 pub const IKE_SCAN_BIN: &'static str = "ike-scan.exe";
@@ -21,8 +21,8 @@ pub fn run(report: &mut ScanReport) {
             Ok(msg) => {
                 println!("{}", msg);
                 report.endpoint_reachable()
-            },
-            Err(msg) => println!("{}", msg)
+            }
+            Err(msg) => println!("{}", msg),
         }
     } else {
         println!("ike-scan failed");
@@ -36,8 +36,8 @@ pub fn run(report: &mut ScanReport) {
             Ok(msg) => {
                 println!("{} using NAT-T", msg);
                 report.endpoint_reachable_using_nat_t()
-            },
-            Err(msg) => println!("{} using NAT-T", msg)
+            }
+            Err(msg) => println!("{} using NAT-T", msg),
         }
     } else {
         println!("ike-scan with NAT-T failed");
@@ -52,10 +52,11 @@ fn exec_ike_scan(conf: &Config) -> Result<Output, String> {
         cmd.arg("--sport").arg(&conf.source_port.to_string());
     }
     cmd.arg(&conf.vpn_endpoint_ip);
-    let output = cmd
-                .output()
-                .expect(&format!("Failed to connect using ike-scan with parameters --sport {} to endpoint {}",
-                        &conf.source_port.to_string(), &conf.vpn_endpoint_ip));
+    let output = cmd.output().expect(&format!(
+        "Failed to connect using ike-scan with parameters --sport {} to endpoint {}",
+        &conf.source_port.to_string(),
+        &conf.vpn_endpoint_ip
+    ));
 
     Ok(output)
 }
@@ -63,7 +64,10 @@ fn exec_ike_scan(conf: &Config) -> Result<Output, String> {
 fn analyze_output(output: &Output) -> Result<String, String> {
     if !output.status.success() {
         println!("ike-scan was a failure - exit code {:?}", output.status.code().expect("Cannot get exit code of ike-scan execution (process must have been killed by signal)"));
-        println!("ike-scan stderr output: {:?}", String::from_utf8_lossy(&output.stderr));
+        println!(
+            "ike-scan stderr output: {:?}",
+            String::from_utf8_lossy(&output.stderr)
+        );
         panic!("Aborting analysis due to failed ike-scan run");
     }
 

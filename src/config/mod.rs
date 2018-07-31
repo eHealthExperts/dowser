@@ -5,11 +5,11 @@ pub struct Config {
     pub vpn_endpoint_ip: String,
     pub source_port: i32,
     pub verbose: bool,
-    pub use_nat_t: bool
+    pub use_nat_t: bool,
 }
 
 pub struct ConfigBuilder {
-    config: Config
+    config: Config,
 }
 
 impl Config {
@@ -26,7 +26,9 @@ impl Config {
 
 impl ConfigBuilder {
     fn new() -> ConfigBuilder {
-        let config = Config { ..Default::default() };
+        let config = Config {
+            ..Default::default()
+        };
         ConfigBuilder { config }
     }
 
@@ -38,7 +40,7 @@ impl ConfigBuilder {
     pub fn source_port(&mut self, port: &str) -> &mut ConfigBuilder {
         let parsed_port = match port.parse::<i32>() {
             Ok(p) => p,
-            _ => panic!("Unable to parse port argument")
+            _ => panic!("Unable to parse port argument"),
         };
         self.config.source_port = parsed_port;
         self
